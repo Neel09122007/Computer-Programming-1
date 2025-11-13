@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main() {
+    int matrix[4][4];
+    int arr[16];
+    int i, j, temp;
+    printf("Enter elements of 4x4 matrix:\n");
+    for(i = 0; i < 4; i++) {
+        for(j = 0; j < 4; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    int *ptr = &matrix[0][0];
+    for(i = 0; i < 16; i++) {
+        arr[i] = *(ptr + i);
+    }
+    for(i = 0; i < 15; i++) {
+        for(j = i + 1; j < 16; j++) {
+            if(arr[i] > arr[j]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    printf("\nSorted elements in 1D array:\n");
+    for(i = 0; i < 16; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
